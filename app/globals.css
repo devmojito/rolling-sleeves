@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark-first theme — these drive shadcn primitives */
+    --background: 0 0% 7.5%;
+    --foreground: 30 5% 89%;
+    --card: 0 0% 13%;
+    --card-foreground: 30 5% 89%;
+    --popover: 0 0% 13%;
+    --popover-foreground: 30 5% 89%;
+    --primary: 37 96% 52%;
+    --primary-foreground: 33 100% 13%;
+    --secondary: 34 75% 73%;
+    --secondary-foreground: 33 100% 13%;
+    --muted: 0 0% 21%;
+    --muted-foreground: 30 27% 76%;
+    --accent: 37 96% 52%;
+    --accent-foreground: 33 100% 13%;
+    --destructive: 3 100% 77%;
+    --destructive-foreground: 0 100% 22%;
+    --border: 0 0% 21%;
+    --input: 0 0% 21%;
+    --ring: 37 96% 52%;
+    --radius: 0rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html,
+  body {
+    @apply bg-ink text-on-surface;
+    font-family: var(--font-manrope), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::selection {
+    @apply bg-gold text-ink;
+  }
+}
+
+@layer utilities {
+  .editorial-shadow {
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .material-symbols-outlined {
+    font-family: "Material Symbols Outlined";
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    font-feature-settings: "liga";
+    -webkit-font-feature-settings: "liga";
+    -webkit-font-smoothing: antialiased;
+    font-variation-settings:
+      "FILL" 0,
+      "wght" 400,
+      "GRAD" 0,
+      "opsz" 24;
+  }
+  .gold-gradient {
+    background: linear-gradient(45deg, #ffbe5b, #e8a020);
+  }
+  .gold-gradient-text {
+    background: linear-gradient(45deg, #ffbe5b, #e8a020);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
