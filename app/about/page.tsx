@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { SectionLabel } from "@/components/section-label";
 import { MaterialIcon } from "@/components/material-icon";
+import { PageHero } from "@/components/page-hero";
 import { Stat } from "@/components/stat";
 import { siteImages } from "@/lib/site-images";
 
@@ -78,31 +79,20 @@ const brandLabels = [
 export default function AboutPage() {
   return (
     <>
-      <section className="relative min-h-screen flex flex-col justify-end pb-24 px-6 md:px-20 overflow-hidden bg-ink pt-28">
-        <div className="absolute inset-0 z-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            alt=""
-            className="w-full h-full object-cover grayscale-[20%]"
-            src={siteImages.aboutHero}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-transparent" />
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto w-full">
-          <SectionLabel className="mb-8">About Rolling Sleeves</SectionLabel>
-          <h1 className="font-headline text-5xl md:text-8xl font-extrabold uppercase tracking-tighter leading-tight max-w-5xl text-white editorial-shadow">
+      <PageHero
+        imageSrc={siteImages.aboutHero}
+        label="About Rolling Sleeves"
+        title={
+          <>
             TWO FOUNDERS.
             <br />
             ONE MISSION.
             <br />
-            <span className="text-gold">FIFTY-PLUS RESTAURANTS.</span>
-          </h1>
-          <p className="font-body text-xl md:text-2xl mt-8 max-w-3xl text-on-surface-variant leading-relaxed opacity-90">
-            We saw too many great concepts fail in the UAE due to poor operational
-            foundations. We built Rolling Sleeves to fix that.
-          </p>
-        </div>
-      </section>
+            <span className="text-primary-container">FIFTY-PLUS RESTAURANTS.</span>
+          </>
+        }
+        description="We saw too many great concepts fail in the UAE due to poor operational foundations. We built Rolling Sleeves to fix that."
+      />
 
       <section className="bg-cream py-32 px-6 md:px-20 text-ink">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { SectionLabel } from "@/components/section-label";
 import { MaterialIcon } from "@/components/material-icon";
+import { PageHero } from "@/components/page-hero";
 import { siteImages } from "@/lib/site-images";
 
 export const metadata: Metadata = {
@@ -71,46 +72,38 @@ const audience = [
 export default function FoodBeverageConsultingPage() {
   return (
     <>
-      <header className="relative h-screen flex items-center justify-start pt-28 px-6 md:px-20 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            alt=""
-            className="w-full h-full object-cover"
-            src={siteImages.fnbHero}
-          />
-          <div className="absolute inset-0 bg-surface/80" />
-          <div className="absolute inset-0 bg-gradient-to-r from-surface to-transparent" />
-        </div>
-        <div className="relative z-10 max-w-4xl space-y-8">
+      <PageHero
+        imageSrc={siteImages.fnbHero}
+        labelSlot={
           <div className="flex flex-wrap items-center gap-4">
-            <SectionLabel>Our Services</SectionLabel>
+            <SectionLabel className="shadow-[0_4px_20px_rgba(232,160,32,0.2)]">
+              Our Services
+            </SectionLabel>
             <span className="text-on-surface-variant text-sm font-semibold tracking-wider uppercase">
               Services → Food &amp; Beverage Consulting
             </span>
           </div>
-          <h1 className="font-headline text-5xl md:text-7xl font-black text-cream leading-[1.1] tracking-[0.05em] uppercase">
+        }
+        title={
+          <>
             Food &amp; Beverage <br /> Consulting That <br />{" "}
             <span className="text-primary-container">Moves the Needle.</span>
-          </h1>
-          <p className="font-body text-xl text-on-surface-variant max-w-2xl leading-relaxed">
-            Expertise-driven consultancy for the UAE. We bridge the gap between
-            white-glove service and boots-on-the-ground reality to elevate your
-            hospitality concept.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 pt-8">
-            <Button asChild size="lg" className="w-full sm:w-auto">
-              <Link href="/contact">
-                Book a free call
-                <MaterialIcon name="arrow_forward" />
-              </Link>
-            </Button>
-            <Button asChild variant="outline-light" size="lg" className="w-full sm:w-auto">
-              <Link href="/services">View all services</Link>
-            </Button>
-          </div>
+          </>
+        }
+        description="Expertise-driven consultancy for the UAE. We bridge the gap between white-glove service and boots-on-the-ground reality to elevate your hospitality concept."
+      >
+        <div className="flex flex-col sm:flex-row gap-6">
+          <Button asChild size="lg" className="w-full sm:w-auto">
+            <Link href="/contact">
+              Book a free call
+              <MaterialIcon name="arrow_forward" />
+            </Link>
+          </Button>
+          <Button asChild variant="outline-light" size="lg" className="w-full sm:w-auto">
+            <Link href="/services">View all services</Link>
+          </Button>
         </div>
-      </header>
+      </PageHero>
 
       <section className="py-32 px-6 md:px-20 bg-cream text-surface-container-lowest">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">

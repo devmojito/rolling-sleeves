@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { SectionLabel } from "@/components/section-label";
 import { MaterialIcon } from "@/components/material-icon";
+import { PageHero } from "@/components/page-hero";
 import { ContactForm } from "@/components/contact-form";
 import { siteImages } from "@/lib/site-images";
 
@@ -22,43 +23,36 @@ const trustItems = [
 export default function ContactPage() {
   return (
     <>
-      <header className="relative min-h-screen w-full flex items-center justify-start bg-surface-container-lowest overflow-hidden pt-24">
-        <div className="absolute inset-0 z-0 bg-black/60" />
-        <div
-          className="absolute inset-0 z-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('${siteImages.contactHero}')`,
-          }}
-        />
-        <div className="relative z-10 w-full max-w-[1920px] mx-auto px-6 xl:px-24">
-          <div className="max-w-4xl space-y-8">
-            <SectionLabel>Get in touch</SectionLabel>
-            <h1 className="font-headline font-black text-5xl md:text-7xl uppercase tracking-[0.05em] text-cream leading-none">
-              LET&apos;S TALK ABOUT YOUR{" "}
-              <span className="text-primary-container">RESTAURANT.</span>
-            </h1>
-            <p className="font-body text-xl text-on-surface-variant max-w-2xl leading-relaxed">
-              Book a free, no-obligation consultation with our hospitality
-              experts. Let&apos;s discuss your vision and how we can turn it into
-              a profitable reality.
-            </p>
-            <div className="flex flex-wrap gap-4 pt-4">
-              <Button asChild size="lg" variant="gradient">
-                <Link href="#consultation">
-                  Book a free call
-                  <MaterialIcon name="arrow_forward" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline-light" size="lg">
-                <a href="https://wa.me/971501234567" target="_blank" rel="noopener noreferrer">
-                  WhatsApp us
-                  <MaterialIcon name="chat" filled />
-                </a>
-              </Button>
-            </div>
-          </div>
+      <PageHero
+        imageSrc={siteImages.contactHero}
+        label="Get in touch"
+        title={
+          <>
+            LET&apos;S TALK ABOUT YOUR{" "}
+            <span className="text-primary-container">RESTAURANT.</span>
+          </>
+        }
+        description="Book a free, no-obligation consultation with our hospitality experts. Let's discuss your vision and how we can turn it into a profitable reality."
+      >
+        <div className="flex flex-wrap gap-4">
+          <Button asChild size="lg" variant="gradient">
+            <Link href="#consultation">
+              Book a free call
+              <MaterialIcon name="arrow_forward" />
+            </Link>
+          </Button>
+          <Button asChild variant="outline-light" size="lg">
+            <a
+              href="https://wa.me/971501234567"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp us
+              <MaterialIcon name="chat" filled />
+            </a>
+          </Button>
         </div>
-      </header>
+      </PageHero>
 
       <section
         className="bg-cream py-32 px-6 xl:px-24 relative z-20"

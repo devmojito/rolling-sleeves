@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { SectionLabel } from "@/components/section-label";
 import { MaterialIcon } from "@/components/material-icon";
+import { PageHero } from "@/components/page-hero";
 import { siteImages } from "@/lib/site-images";
 
 export const metadata: Metadata = {
@@ -133,28 +134,17 @@ const testimonials = [
 export default function ServicesPage() {
   return (
     <>
-      <section className="relative pt-32 pb-32 px-6 md:px-12 lg:px-24 min-h-screen flex items-center bg-ink overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-ink/80 z-10" />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            alt=""
-            className="w-full h-full object-cover"
-            src={siteImages.servicesHero}
-          />
-        </div>
-        <div className="relative z-20 max-w-5xl mx-auto w-full">
-          <SectionLabel className="mb-8">What we do</SectionLabel>
-          <h1 className="font-headline text-5xl md:text-7xl lg:text-[5.5rem] font-black uppercase tracking-[0.05em] leading-[1.1] text-white">
+      <PageHero
+        imageSrc={siteImages.servicesHero}
+        label="What we do"
+        title={
+          <>
             EVERYTHING YOUR RESTAURANT NEEDS,{" "}
-            <span className="text-gold">UNDER ONE ROOF.</span>
-          </h1>
-          <p className="mt-8 font-body text-xl md:text-2xl text-white/70 max-w-3xl leading-relaxed">
-            From napkin sketches to grand openings and beyond. We don&apos;t just
-            consult; we execute with precision.
-          </p>
-        </div>
-      </section>
+            <span className="text-primary-container">UNDER ONE ROOF.</span>
+          </>
+        }
+        description="From napkin sketches to grand openings and beyond. We don't just consult; we execute with precision."
+      />
 
       <section className="py-32 px-6 md:px-12 lg:px-24 bg-cream text-ink">
         <div className="max-w-7xl mx-auto">

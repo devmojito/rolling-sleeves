@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export function SiteFooter() {
   return (
-    <footer className="w-full border-t-2 border-gold bg-navy text-cream">
+    <footer className="w-full border-t-2 border-gold bg-gradient-to-b from-surface-container-high via-surface-container to-surface-container-lowest text-cream">
       <div className="max-w-7xl mx-auto px-6 md:px-8 py-20 grid grid-cols-1 md:grid-cols-4 gap-12 font-body text-sm">
         <div className="md:col-span-1">
           <div className="font-headline font-bold text-white text-2xl mb-6">

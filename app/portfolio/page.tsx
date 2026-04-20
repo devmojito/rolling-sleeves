@@ -3,8 +3,8 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { SectionLabel } from "@/components/section-label";
 import { MaterialIcon } from "@/components/material-icon";
+import { PageHero } from "@/components/page-hero";
 import { siteImages } from "@/lib/site-images";
 
 const filters = [
@@ -65,32 +65,25 @@ export default function PortfolioPage() {
 
   return (
     <>
-      <section className="relative h-[min(1024px,100vh)] w-full flex items-center justify-center bg-surface-container-lowest pt-24">
-        <div className="absolute inset-0 z-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            alt=""
-            className="w-full h-full object-cover"
-            src={siteImages.portfolioHero}
-          />
-          <div className="absolute inset-0 bg-surface/60 mix-blend-multiply" />
-        </div>
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 flex flex-col items-start mt-12 md:mt-20">
-          <SectionLabel className="mb-8 shadow-[0_4px_20px_rgba(232,160,32,0.2)]">
-            Our Work
-          </SectionLabel>
-          <h1 className="font-headline font-black text-5xl md:text-7xl lg:text-[5rem] leading-[1.1] tracking-[0.05em] text-white uppercase max-w-5xl mb-8 drop-shadow-2xl">
+      <PageHero
+        imageSrc={siteImages.portfolioHero}
+        label="Our Work"
+        title={
+          <>
             OVER 50 CONCEPTS.
             <br />
-            ONE STANDARD: <span className="text-primary-container">EXCELLENCE.</span>
-          </h1>
-          <p className="font-body text-xl md:text-2xl text-on-surface-variant max-w-2xl leading-relaxed border-l-2 border-primary-container pl-6">
+            ONE STANDARD:{" "}
+            <span className="text-primary-container">EXCELLENCE.</span>
+          </>
+        }
+        description={
+          <>
             Curating and launching premium hospitality groups across the UAE and
             GCC. We don&apos;t just build restaurants; we build cultural
             landmarks.
-          </p>
-        </div>
-      </section>
+          </>
+        }
+      />
 
       <section className="bg-cream py-24 w-full">
         <div className="container mx-auto px-6 lg:px-12">

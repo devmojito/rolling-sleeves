@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { SectionLabel } from "@/components/section-label";
 import { MaterialIcon } from "@/components/material-icon";
+import { PageHero } from "@/components/page-hero";
 import { siteImages } from "@/lib/site-images";
 
 export const metadata: Metadata = {
@@ -32,34 +33,25 @@ const articles = [
 export default function BlogPage() {
   return (
     <>
-      <header className="relative w-full min-h-screen flex flex-col justify-center items-start px-6 md:px-12 lg:px-24 pt-28">
-        <div className="absolute inset-0 z-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            alt=""
-            className="w-full h-full object-cover object-center"
-            src={siteImages.blogKitchen}
-          />
-          <div className="absolute inset-0 bg-surface/60" />
-        </div>
-        <div className="relative z-10 max-w-5xl">
-          <h1 className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-[0.05em] text-white leading-tight mb-6">
+      <PageHero
+        imageSrc={siteImages.blogKitchen}
+        label="Insights"
+        title={
+          <>
             FROM THE KITCHEN
             <br />
             AND THE BOARDROOM.
-          </h1>
-          <p className="font-body text-xl text-on-surface-variant max-w-2xl mb-12">
-            Operational truth and strategic clarity from the vanguard of
-            high-end hospitality consulting.
-          </p>
-          <Button asChild size="lg">
-            <Link href="#featured">
-              Browse articles
-              <MaterialIcon name="arrow_forward" />
-            </Link>
-          </Button>
-        </div>
-      </header>
+          </>
+        }
+        description="Operational truth and strategic clarity from the vanguard of high-end hospitality consulting."
+      >
+        <Button asChild size="lg">
+          <Link href="#featured">
+            Browse articles
+            <MaterialIcon name="arrow_forward" />
+          </Link>
+        </Button>
+      </PageHero>
 
       <section
         className="w-full bg-cream text-ink py-32 px-6 md:px-12 lg:px-24"
