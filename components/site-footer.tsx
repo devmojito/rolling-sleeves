@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Instagram, Linkedin, Twitter } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
@@ -107,7 +108,7 @@ export function SiteFooter() {
             <Input
               type="email"
               placeholder="Email Address"
-              className="text-white placeholder:text-cream/40"
+              className="text-white placeholder:text-cream/40 border-[#D4931F] focus:border-[#D4931F]"
             />
             <Button type="submit" size="sm" className="py-3">
               Subscribe
@@ -119,24 +120,27 @@ export function SiteFooter() {
           <div className="text-cream/70">
             © {new Date().getFullYear()} Rolling Sleeves. All rights reserved.
           </div>
-          <div className="flex gap-8">
+          <div className="flex items-center gap-6">
             <a
               href="#"
-              className="text-cream/70 hover:text-gold transition-colors"
+              aria-label="Instagram"
+              className="text-cream/70 hover:text-gold transition-colors p-1 -m-1"
             >
-              Instagram
+              <Instagram className="size-6" strokeWidth={1.75} aria-hidden />
             </a>
             <a
               href="#"
-              className="text-cream/70 hover:text-gold transition-colors"
+              aria-label="LinkedIn"
+              className="text-cream/70 hover:text-gold transition-colors p-1 -m-1"
             >
-              LinkedIn
+              <Linkedin className="size-6" strokeWidth={1.75} aria-hidden />
             </a>
             <a
               href="#"
-              className="text-cream/70 hover:text-gold transition-colors"
+              aria-label="Twitter"
+              className="text-cream/70 hover:text-gold transition-colors p-1 -m-1"
             >
-              Twitter
+              <Twitter className="size-6" strokeWidth={1.75} aria-hidden />
             </a>
           </div>
         </div>

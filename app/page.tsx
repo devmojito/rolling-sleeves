@@ -103,7 +103,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-screen flex items-center overflow-hidden bg-ink">
+      <section className="relative h-dvh flex items-center overflow-hidden bg-ink">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/60 to-transparent z-10" />
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -113,9 +113,8 @@ export default function HomePage() {
             src={siteImages.heroRestaurant}
           />
         </div>
-        <div className="relative z-20 px-6 md:px-20 max-w-6xl">
-          <SectionLabel className="mb-8">Established Expertise</SectionLabel>
-          <h1 className="font-headline font-extrabold text-5xl md:text-8xl leading-tight text-white mb-8 tracking-tighter editorial-shadow uppercase">
+        <div className="relative z-20 px-6 md:px-20 max-w-6xl mt-16 md:mt-24 lg:mt-28">
+          <h1 className="font-headline font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.08] text-white mb-8 tracking-tighter editorial-shadow uppercase">
             WE ROLL UP OUR <br />
             <span className="text-gold italic font-light">SLEEVES</span> SO YOUR
             <br />

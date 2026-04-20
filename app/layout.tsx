@@ -33,10 +33,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`dark ${epilogue.variable} ${manrope.variable}`}>
-      <body className="bg-ink text-on-surface font-body antialiased min-h-screen flex flex-col">
+    <html
+      lang="en"
+      className={`dark ${epilogue.variable} ${manrope.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+        />
+      </head>
+      <body
+        className="bg-ink text-on-surface font-body antialiased min-h-dvh flex flex-col"
+        suppressHydrationWarning
+      >
         <SiteHeader />
-        <main className="flex-1">{children}</main>
+        <main className="min-h-0 flex-1">{children}</main>
         <SiteFooter />
       </body>
     </html>
