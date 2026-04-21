@@ -2,15 +2,14 @@ import Link from "next/link";
 import { Instagram, Linkedin, Twitter } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { SiteLogo } from "@/components/site-logo";
 
 export function SiteFooter() {
   return (
     <footer className="w-full border-t-2 border-gold bg-gradient-to-b from-surface-container-high via-surface-container to-surface-container-lowest text-cream">
       <div className="max-w-7xl mx-auto px-6 md:px-8 py-20 grid grid-cols-1 md:grid-cols-4 gap-12 font-body text-sm">
         <div className="md:col-span-1">
-          <div className="font-headline font-bold text-white text-2xl mb-6">
-            Rolling Sleeves
-          </div>
+          <SiteLogo linkClassName="mb-6" />
           <p className="text-cream/70 leading-relaxed mb-8">
             Forging excellence in the global hospitality industry through
             operational precision and creative strategy.

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Epilogue, Manrope } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { SitePreloader } from "@/components/site-preloader";
 import "./globals.css";
 
 const epilogue = Epilogue({
@@ -51,6 +52,7 @@ export default function RootLayout({
         <SiteHeader />
         <main className="min-h-0 flex-1">{children}</main>
         <SiteFooter />
+        <SitePreloader />
       </body>
     </html>
   );

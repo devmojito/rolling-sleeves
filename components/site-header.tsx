@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { MaterialIcon } from "@/components/material-icon";
+import { SiteLogo } from "@/components/site-logo";
 
 const nav = [
   { href: "/", label: "Home" },
@@ -28,13 +29,10 @@ export function SiteHeader() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-ink/90 backdrop-blur-md border-b border-white/5">
       <div className="flex justify-between items-center px-6 md:px-8 py-6 font-headline tracking-tight">
-        <Link
-          href="/"
-          className="text-xl md:text-2xl font-bold tracking-tighter text-white uppercase"
+        <SiteLogo
+          priority
           onClick={() => setMobileOpen(false)}
-        >
-          Rolling Sleeves
-        </Link>
+        />
         <nav className="hidden md:flex items-center gap-8 text-sm uppercase tracking-widest font-bold">
           {nav.map((item) => (
             <Link
