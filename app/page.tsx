@@ -103,7 +103,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-dvh flex items-center overflow-hidden bg-ink">
+      <section className="relative h-screen-dynamic flex items-center overflow-hidden bg-ink">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/60 to-transparent z-10" />
           {/* eslint-disable-next-line @next/next/no-img-element */}

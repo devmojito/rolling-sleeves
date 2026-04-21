@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Fail-safe: if JS never runs (e.g. dev chunks 404), dismiss the preloader
+   after 8s via pure CSS so the site is still usable. When JS loads, the
+   React effect hides it at ~1.4s and this fallback never fires. */
+@keyframes site-preloader-dismiss {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+#site-preloader {
+  animation: site-preloader-dismiss 0.5s ease-out 8s forwards;
+}
+
 @layer base {
   :root {
     /* Dark-first theme — these drive shadcn primitives */
@@ -38,6 +51,8 @@
     font-family: var(--font-manrope), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
   ::selection {
     @apply bg-gold text-ink;
@@ -45,6 +60,14 @@
 }
 
 @layer utilities {
+  .h-screen-dynamic {
+    height: 100vh;
+    height: 100dvh;
+  }
+  .h-hero-page {
+    height: min(1024px, 100vh);
+    height: min(1024px, 100dvh);
+  }
   .editorial-shadow {
     text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   }

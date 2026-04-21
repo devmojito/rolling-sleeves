@@ -57,6 +57,7 @@ export function SitePreloader() {
 
   return (
     <div
+      id="site-preloader"
       className={cn(
         "fixed inset-0 z-[100] flex items-center justify-center bg-ink transition-opacity duration-500 ease-out motion-reduce:transition-none",
         phase === "hiding" ? "pointer-events-none opacity-0" : "opacity-100"

@@ -40,13 +40,25 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        {/* Load Material Symbols in parallel with the rest of the page.
+            Previously imported via @import in globals.css, which is
+            render-blocking and serializes network requests. */}
+        <link
+          rel="preconnect"
+          href="https://fonts.googleapis.com"
+        />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
         />
       </head>
       <body
-        className="bg-ink text-on-surface font-body antialiased min-h-dvh flex flex-col"
+        className="bg-ink text-on-surface font-body antialiased flex flex-col"
         suppressHydrationWarning
       >
         <SiteHeader />

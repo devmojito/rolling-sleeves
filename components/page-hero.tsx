@@ -30,7 +30,7 @@ export function PageHero({
   return (
     <section
       className={cn(
-        "relative h-[min(1024px,100dvh)] w-full flex items-center justify-center bg-surface-container-lowest pt-24",
+        "relative h-hero-page w-full flex items-center justify-center bg-surface-container-lowest pt-24",
         className
       )}
     >

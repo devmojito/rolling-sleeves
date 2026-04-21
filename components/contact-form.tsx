@@ -13,8 +13,18 @@ const selectClass = cn(
   "focus:outline-none focus:border-primary-container transition-colors appearance-none cursor-pointer"
 );
 
-export function ContactForm() {
+function fieldId(prefix: string | undefined, base: string) {
+  return prefix ? `${prefix}-${base}` : base;
+}
+
+export type ContactFormProps = {
+  /** Avoid duplicate DOM ids when another contact form is on the page (e.g. modal + /contact). */
+  fieldIdPrefix?: string;
+};
+
+export function ContactForm({ fieldIdPrefix }: ContactFormProps) {
   const [submitted, setSubmitted] = useState(false);
+  const id = (base: string) => fieldId(fieldIdPrefix, base);
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -25,11 +35,11 @@ export function ContactForm() {
     <form onSubmit={onSubmit} className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="space-y-2">
-          <Label htmlFor="name" className="text-cream/80">
+          <Label htmlFor={id("name")} className="text-cream/80">
             Full Name
           </Label>
           <Input
-            id="name"
+            id={id("name")}
             name="name"
             required
             autoComplete="name"
@@ -37,11 +47,11 @@ export function ContactForm() {
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="email" className="text-cream/80">
+          <Label htmlFor={id("email")} className="text-cream/80">
             Email Address
           </Label>
           <Input
-            id="email"
+            id={id("email")}
             name="email"
             type="email"
             required
@@ -52,11 +62,11 @@ export function ContactForm() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="space-y-2">
-          <Label htmlFor="phone" className="text-cream/80">
+          <Label htmlFor={id("phone")} className="text-cream/80">
             Phone Number
           </Label>
           <Input
-            id="phone"
+            id={id("phone")}
             name="phone"
             type="tel"
             autoComplete="tel"
@@ -64,11 +74,11 @@ export function ContactForm() {
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="business" className="text-cream/80">
+          <Label htmlFor={id("business")} className="text-cream/80">
             Business Name (Optional)
           </Label>
           <Input
-            id="business"
+            id={id("business")}
             name="business"
             autoComplete="organization"
             className="text-cream border-outline-variant/30 focus:border-primary-container"
@@ -77,10 +87,10 @@ export function ContactForm() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="space-y-2">
-          <Label htmlFor="type" className="text-cream/80">
+          <Label htmlFor={id("type")} className="text-cream/80">
             Concept Type
           </Label>
-          <select id="type" name="type" required className={selectClass}>
+          <select id={id("type")} name="type" required className={selectClass}>
             <option value="">Select concept type</option>
             <option value="fine-dining">Fine Dining</option>
             <option value="casual">Casual Dining</option>
@@ -90,10 +100,10 @@ export function ContactForm() {
           </select>
         </div>
         <div className="space-y-2">
-          <Label htmlFor="stage" className="text-cream/80">
+          <Label htmlFor={id("stage")} className="text-cream/80">
             Current Stage
           </Label>
-          <select id="stage" name="stage" required className={selectClass}>
+          <select id={id("stage")} name="stage" required className={selectClass}>
             <option value="">Current stage</option>
             <option value="idea">Just an Idea</option>
             <option value="planning">Planning / Funding</option>
@@ -103,11 +113,11 @@ export function ContactForm() {
         </div>
       </div>
       <div className="space-y-2 pt-2">
-        <Label htmlFor="project" className="text-cream/80">
+        <Label htmlFor={id("project")} className="text-cream/80">
           Tell us about your vision
         </Label>
         <Textarea
-          id="project"
+          id={id("project")}
           name="project"
           rows={4}
           required
@@ -115,10 +125,10 @@ export function ContactForm() {
         />
       </div>
       <div className="space-y-2">
-        <Label htmlFor="source" className="text-cream/80">
+        <Label htmlFor={id("source")} className="text-cream/80">
           How did you hear about us?
         </Label>
-        <select id="source" name="source" className={selectClass}>
+        <select id={id("source")} name="source" className={selectClass}>
           <option value="">Select an option</option>
           <option value="search">Search Engine</option>
           <option value="social">Social Media</option>
