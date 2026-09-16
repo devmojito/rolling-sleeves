@@ -13,6 +13,7 @@ const nav = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
+  { href: "/insights", label: "Insights" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -27,9 +28,9 @@ export function SiteHeader() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-ink/90 backdrop-blur-md border-b border-cream/10">
-      <div className="flex justify-between items-center px-6 md:px-10 py-4">
+      <div className="flex justify-between items-center px-6 md:px-10 py-4 gap-6">
         <SiteLogo priority onClick={() => setMobileOpen(false)} />
-        <nav className="hidden md:flex items-center gap-10 text-xs uppercase tracking-[0.22em] font-semibold">
+        <nav className="hidden lg:flex items-center gap-10 text-xs uppercase tracking-[0.22em] font-semibold">
           {nav.map((item) => (
             <Link
               key={item.href}
@@ -45,11 +46,11 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
-        <Button asChild size="sm" className="hidden md:inline-flex">
+        <Button asChild size="sm" className="hidden lg:inline-flex">
           <Link href={siteConfig.ctaHref}>{siteConfig.ctaLabel}</Link>
         </Button>
         <button
-          className="md:hidden text-cream p-2 -mr-2"
+          className="lg:hidden text-cream p-2 -mr-2"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
           type="button"
@@ -60,7 +61,7 @@ export function SiteHeader() {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden border-t border-cream/10 bg-ink px-6 py-6 flex flex-col gap-4 animate-in slide-in-from-top-2 duration-200">
+        <div className="lg:hidden border-t border-cream/10 bg-ink px-6 py-6 flex flex-col gap-4 animate-in slide-in-from-top-2 duration-200">
           {nav.map((item) => (
             <Link
               key={item.href}

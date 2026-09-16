@@ -5,6 +5,7 @@ import {
   CaseStudiesSection,
   FinalCta,
   FoundersSection,
+  InsightsSection,
   JourneySection,
   TestimonialsSection,
 } from "@/components/sections";
@@ -290,6 +291,7 @@ export default function HomePage() {
       <CaseStudiesSection />
       <FoundersSection />
       <TestimonialsSection />
+      <InsightsSection />
       <FinalCta />
     </>
   );

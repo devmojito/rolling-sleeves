@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { SectionLabel } from "@/components/section-label";
 import { founders, journey, testimonials, caseStudies } from "@/lib/services";
 import { siteConfig, whatsappLink } from "@/lib/site-config";
+import { articles } from "@/lib/articles";
 
 export function FoundersSection() {
   return (
@@ -125,6 +126,44 @@ export function TestimonialsSection() {
                 {t.project ? ` · ${t.project}` : ""}
               </figcaption>
             </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function InsightsSection() {
+  return (
+    <section className="bg-ink py-28 px-6 md:px-20 text-cream">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+          <div>
+            <SectionLabel className="mb-6">Insights</SectionLabel>
+            <h2 className="font-headline font-medium text-4xl md:text-5xl leading-tight">
+              Notes from the kitchen.
+            </h2>
+          </div>
+          <Link
+            href="/insights"
+            className="text-xs uppercase tracking-[0.22em] font-semibold text-cream/70 hover:text-cream"
+          >
+            All insights →
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-cream/10">
+          {articles.slice(0, 3).map((a) => (
+            <Link
+              key={a.slug}
+              href={`/insights/${a.slug}`}
+              className="group bg-ink p-8 hover:bg-surface-container transition-colors"
+            >
+              <p className="text-xs uppercase tracking-[0.2em] text-sand/70 mb-4">{a.category}</p>
+              <h3 className="font-headline text-2xl leading-snug mb-3 group-hover:text-sand transition-colors">
+                {a.title}
+              </h3>
+              <p className="text-cream/60 leading-relaxed">{a.description}</p>
+            </Link>
           ))}
         </div>
       </div>

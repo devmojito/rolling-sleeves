@@ -69,6 +69,9 @@ export function SiteFooter() {
             <Link href="/services" className={linkClass}>
               Services
             </Link>
+            <Link href="/insights" className={linkClass}>
+              Insights
+            </Link>
             <Link href="/contact" className={linkClass}>
               Contact
             </Link>

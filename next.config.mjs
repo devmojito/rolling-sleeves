@@ -15,9 +15,9 @@ const nextConfig = {
         destination: "/services/menu-culinary-development",
         permanent: true,
       },
-      // Hidden until real case studies and articles are ready.
+      // Hidden until real case studies are ready.
       { source: "/portfolio", destination: "/", permanent: false },
-      { source: "/blog", destination: "/", permanent: false },
+      { source: "/blog", destination: "/insights", permanent: true },
     ];
   },
   // Narrow what webpack watches in dev — reduces flaky rebuilds when tooling
