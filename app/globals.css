@@ -17,7 +17,7 @@
 
 @layer base {
   :root {
-    /* Dark-first theme — these drive shadcn primitives */
+    /* Dark-first theme: these drive shadcn primitives */
     --background: 7 21% 8.5%;
     --foreground: 30 5% 89%;
     --card: 8 20% 11%;
