@@ -38,10 +38,10 @@ export function PageHero({
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           alt={imageAlt}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover grayscale-[40%]"
           src={imageSrc}
         />
-        <div className="absolute inset-0 bg-surface/60 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-ink/70" />
       </div>
       <div className="relative z-10 container mx-auto px-6 lg:px-12 flex flex-col items-start mt-12 md:mt-20">
         {labelSlot ? (
@@ -49,17 +49,17 @@ export function PageHero({
         ) : label ? (
           <SectionLabel
             className={cn(
-              "mb-8 shadow-[0_4px_20px_rgba(232,160,32,0.2)]",
+              "mb-8",
               sectionLabelClassName
             )}
           >
             {label}
           </SectionLabel>
         ) : null}
-        <h1 className="font-headline font-black text-5xl md:text-7xl lg:text-[5rem] leading-[1.1] tracking-[0.05em] text-white uppercase max-w-5xl mb-8 drop-shadow-2xl">
+        <h1 className="font-headline font-medium text-4xl md:text-6xl lg:text-7xl leading-[1.05] text-cream max-w-5xl mb-8">
           {title}
         </h1>
-        <p className="font-body text-xl md:text-2xl text-on-surface-variant max-w-2xl leading-relaxed border-l-2 border-primary-container pl-6">
+        <p className="font-body text-lg md:text-xl text-cream/80 max-w-2xl leading-relaxed border-l border-sand/50 pl-6">
           {description}
         </p>
         {children ? <div className="mt-8 w-full max-w-4xl">{children}</div> : null}

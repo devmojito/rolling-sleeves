@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 type Phase = "visible" | "hiding" | "gone";
 
 const FADE_MS = 500;
-const MIN_VISIBLE_MS = 1_400;
+const MIN_VISIBLE_MS = 3_400;
 
 export function SitePreloader() {
   const [phase, setPhase] = useState<Phase>("visible");

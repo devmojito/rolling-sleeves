@@ -6,9 +6,9 @@ import { cn } from "@/lib/utils";
 const LOGO_SRC = "/main-light.png";
 const LOGO_WIDTH = 11779;
 const LOGO_HEIGHT = 3371;
-const LOGO_SIZES = "(max-width: 768px) 320px, 420px";
+const LOGO_SIZES = "(max-width: 768px) 380px, 520px";
 const LOGO_IMG_CLASS =
-  "h-11 w-auto max-w-[min(72vw,320px)] object-contain object-left md:h-14 md:max-w-[420px]";
+  "h-14 w-auto max-w-[min(74vw,380px)] object-contain object-left md:h-[4.5rem] md:max-w-[520px]";
 
 type SiteLogoProps = {
   priority?: boolean;
@@ -30,7 +30,7 @@ export function SiteLogo({
       href="/"
       onClick={onClick}
       className={cn(
-        "inline-flex shrink-0 items-center rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink",
+        "inline-flex shrink-0 items-center rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-sand focus-visible:ring-offset-2 focus-visible:ring-offset-ink",
         linkClassName
       )}
     >

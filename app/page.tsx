@@ -1,444 +1,296 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { SectionLabel } from "@/components/section-label";
-import { MaterialIcon } from "@/components/material-icon";
-import { Stat } from "@/components/stat";
+import {
+  CaseStudiesSection,
+  FinalCta,
+  FoundersSection,
+  JourneySection,
+  TestimonialsSection,
+} from "@/components/sections";
+import { audiences, services, verifiedStats } from "@/lib/services";
+import { siteConfig } from "@/lib/site-config";
 import { siteImages } from "@/lib/site-images";
 
-const services = [
+const lifecycle = [
+  "Concept",
+  "Kitchen",
+  "Menu",
+  "Operations",
+  "Pre-Opening",
+  "Launch",
+  "Optimisation",
+];
+
+const problems = [
   {
-    title: "F&B Consulting",
-    blurb:
-      "Menu engineering, procurement optimization, and front-of-house training systems.",
-    img: siteImages.wine,
+    title: "A kitchen that slows service down",
+    blurb: "Poor layout and flow cost you covers every single night.",
   },
   {
-    title: "Pre-Opening Support",
-    blurb:
-      "From licensing to soft-launch management. We handle the friction of starting up.",
-    img: siteImages.waiters,
+    title: "Food and labour costs creeping up",
+    blurb: "Margins disappear quietly when nobody is watching the numbers.",
   },
   {
-    title: "Delivery & Cloud Kitchen",
-    blurb:
-      "Scaling your brand into the digital space with efficient, high-volume models.",
-    img: siteImages.tablet,
+    title: "An opening date that keeps slipping",
+    blurb: "Pre-opening has hundreds of moving parts and no room for surprises.",
+  },
+  {
+    title: "A team without systems",
+    blurb: "Without SOPs and training, standards depend on who is on shift.",
+  },
+  {
+    title: "A menu that does not make money",
+    blurb: "Popular dishes are not always profitable ones.",
+  },
+  {
+    title: "Wastage you cannot see",
+    blurb: "Over-ordering, poor storage and prep habits add up.",
   },
 ];
 
-const values = [
-  {
-    icon: "handshake",
-    title: "Integrity",
-    blurb:
-      "We provide honest, data-driven assessments without sugar-coating.",
-  },
-  {
-    icon: "analytics",
-    title: "Innovation",
-    blurb: "Applying modern tech stacks to traditional service models.",
-  },
-  {
-    icon: "layers",
-    title: "Scalability",
-    blurb: "Systems built to replicate across multiple units flawlessly.",
-  },
-  {
-    icon: "verified",
-    title: "Quality",
-    blurb:
-      "Maintaining the highest standards of culinary and service excellence.",
-  },
+const kitchenAreas = [
+  "Layout",
+  "Equipment planning",
+  "Workflow",
+  "Receiving",
+  "Storage",
+  "Preparation",
+  "Cooking",
+  "The pass",
+  "Dishwashing",
+  "Waste",
+  "Food safety",
 ];
 
-const testimonials = [
-  {
-    quote:
-      "Rolling Sleeves transformed our kitchen flow. Our ticket times dropped by 30% without sacrificing an ounce of quality.",
-    name: "Marcus Thorne",
-    role: "Founder, Ember & Co.",
-    img: siteImages.testimonialMarcus,
-  },
-  {
-    quote:
-      "Their pre-opening support was a lifesaver. We launched with a fully trained team and a bulletproof supply chain.",
-    name: "Elena Rodriguez",
-    role: "COO, Skyview Hospitality",
-    img: siteImages.testimonialElena,
-  },
-  {
-    quote:
-      "Rolling Sleeves doesn't just give you a report; they get in the kitchen with you. Truly boots-on-the-ground expertise.",
-    name: "Julian Chen",
-    role: "Director, Artisan Plate",
-    img: siteImages.testimonialJulian,
-  },
-];
-
-const posts = [
-  {
-    category: "Operations • 5 min read",
-    title: "5 Errors Killing Your Profit Margins",
-    blurb:
-      "Uncover the hidden operational leaks that are draining your restaurant's bottom line every single night.",
-    img: siteImages.blog1,
-  },
-  {
-    category: "Branding • 8 min read",
-    title: "The Sensory Psychology of Dining",
-    blurb:
-      "How lighting, scent, and sound engineering can increase guest average spend by up to 15%.",
-    img: siteImages.blog2,
-  },
-  {
-    category: "Future • 10 min read",
-    title: "2025 Hospitality Trends Report",
-    blurb:
-      "What the next decade of fine dining and quick service looks like in an AI-driven culinary world.",
-    img: siteImages.blog3,
-  },
+const pillars = [
+  "Concept",
+  "Design",
+  "Kitchen",
+  "Culinary",
+  "Operations",
+  "People",
+  "Profitability",
 ];
 
 export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-screen-dynamic flex items-center overflow-hidden bg-ink">
+      <section className="relative min-h-screen-dynamic flex items-center overflow-hidden bg-ink pt-28 pb-16">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/60 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/75 to-ink/30 z-10" />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            alt="Moody high-end restaurant interior at night"
-            className="w-full h-full object-cover grayscale-[20%]"
+            alt=""
+            className="w-full h-full object-cover grayscale-[40%]"
             src={siteImages.heroRestaurant}
           />
         </div>
-        <div className="relative z-20 px-6 md:px-20 max-w-6xl mt-16 md:mt-24 lg:mt-28">
-          <h1 className="font-headline font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.08] text-white mb-8 tracking-tighter editorial-shadow uppercase">
-            WE ROLL UP OUR <br />
-            <span className="text-gold italic font-light">SLEEVES</span> SO YOUR
-            <br />
-            RESTAURANT DOESN&apos;T HAVE TO.
+        <div className="relative z-20 px-6 md:px-20 max-w-6xl">
+          <SectionLabel className="mb-8">
+            Restaurant &amp; F&amp;B Consultancy · UAE
+          </SectionLabel>
+          <h1 className="font-headline font-medium text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] text-cream mb-8">
+            We Roll Up Our Sleeves So Your Restaurant Doesn&apos;t Have To.
           </h1>
-          <p className="text-on-surface-variant text-xl md:text-2xl max-w-2xl mb-12 leading-relaxed">
-            Bespoke consultancy for modern hospitality. We bridge the gap
-            between architectural vision and operational excellence.
+          <p className="text-cream/80 text-lg md:text-xl max-w-2xl mb-6 leading-relaxed">
+            We build restaurants and make them work, from the first idea to a
+            profitable, well-run operation.
           </p>
-          <div className="flex flex-wrap gap-6">
+          <p className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs uppercase tracking-[0.2em] text-sand mb-12">
+            {lifecycle.map((step, i) => (
+              <span key={step} className="flex items-center gap-3">
+                {step}
+                {i < lifecycle.length - 1 && <span aria-hidden className="text-sand/50">→</span>}
+              </span>
+            ))}
+          </p>
+          <div className="flex flex-wrap gap-4">
             <Button asChild size="lg">
-              <Link href="/services">
-                Discover Services
-                <MaterialIcon name="trending_flat" />
-              </Link>
+              <Link href={siteConfig.ctaHref}>Let&apos;s Build Your Restaurant</Link>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <Link href="/portfolio">Our Portfolio</Link>
+              <Link href="/services">Our Services</Link>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* About */}
-      <section className="bg-cream py-32 px-6 md:px-20 text-ink">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <div>
-            <SectionLabel className="mb-8">Our Philosophy</SectionLabel>
-            <h2 className="font-headline font-bold text-4xl md:text-6xl text-ink leading-none mb-8 tracking-tighter uppercase">
-              WE BUILD <br />
-              RESTAURANTS <br />
-              THAT LAST.
-            </h2>
-            <p className="text-ink/70 text-lg leading-relaxed mb-10 max-w-lg">
-              In an industry of trends, we focus on timeless operational
-              structures. From kitchen ergonomics to sensory branding, we ensure
-              every touchpoint is curated for profit and longevity.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="flex flex-col gap-4">
-                <MaterialIcon name="restaurant_menu" className="text-gold text-4xl" />
-                <h4 className="font-headline font-bold text-xl uppercase tracking-wider">
-                  Concept Design
-                </h4>
-                <p className="text-ink/60 text-sm">
-                  Forging unique identities that cut through the market noise.
-                </p>
+      {/* Verified stats (shown only once real figures are provided) */}
+      {verifiedStats.length > 0 && (
+        <section className="bg-ink py-16 border-y border-cream/10">
+          <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+            {verifiedStats.map((s) => (
+              <div key={s.label}>
+                <div className="font-headline text-5xl text-cream">{s.value}</div>
+                <div className="text-xs uppercase tracking-[0.2em] text-sand mt-2">{s.label}</div>
               </div>
-              <div className="flex flex-col gap-4">
-                <MaterialIcon name="finance_chip" className="text-gold text-4xl" />
-                <h4 className="font-headline font-bold text-xl uppercase tracking-wider">
-                  Operational Audit
-                </h4>
-                <p className="text-ink/60 text-sm">
-                  Deep-dive analysis to eliminate waste and maximize floor yield.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
-          <div className="relative">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              alt="Chef plating a dish"
-              className="w-full aspect-[4/5] object-cover grayscale-[10%]"
-              src={siteImages.chefPlating}
-            />
-            <div className="absolute -bottom-10 -left-10 bg-ink text-cream p-12 hidden md:block">
-              <div className="font-headline font-extrabold text-7xl text-gold leading-none">
-                15+
+        </section>
+      )}
+
+      {/* Problems we solve */}
+      <section className="bg-cream py-28 px-6 md:px-20 text-espresso">
+        <div className="max-w-7xl mx-auto">
+          <SectionLabel variant="light" className="mb-6">
+            Restaurant Problems We Solve
+          </SectionLabel>
+          <h2 className="font-headline font-medium text-4xl md:text-5xl leading-tight mb-16 max-w-3xl">
+            Most restaurants don&apos;t struggle because of the food.
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-espresso/10">
+            {problems.map((p) => (
+              <div key={p.title} className="bg-cream p-8">
+                <h3 className="font-headline text-2xl mb-3">{p.title}</h3>
+                <p className="text-espresso/70 leading-relaxed">{p.blurb}</p>
               </div>
-              <div className="font-bold text-sm tracking-widest mt-2 uppercase">
-                Years Experience
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Services */}
-      <section className="bg-ink py-32 px-6 md:px-20 text-cream">
+      <section className="bg-ink py-28 px-6 md:px-20 text-cream">
         <div className="max-w-7xl mx-auto">
-          <div className="flex justify-between items-end mb-20">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
             <div>
-              <SectionLabel className="mb-8">Our Services</SectionLabel>
-              <h2 className="font-headline font-bold text-4xl md:text-5xl tracking-tighter uppercase">
-                The Core Pillars
+              <SectionLabel className="mb-6">Services</SectionLabel>
+              <h2 className="font-headline font-medium text-4xl md:text-5xl leading-tight max-w-2xl">
+                Every stage of a restaurant&apos;s life.
               </h2>
             </div>
             <Link
               href="/services"
-              className="hidden md:flex items-center gap-2 font-bold hover:text-gold transition-colors group"
+              className="text-xs uppercase tracking-[0.22em] font-semibold text-cream/70 hover:text-cream"
             >
-              View All Services{" "}
-              <MaterialIcon
-                name="trending_flat"
-                className="group-hover:translate-x-2 transition-transform"
-              />
+              All services →
             </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-cream/10">
             {services.map((s) => (
-              <div
-                key={s.title}
-                className="bg-surface-container-high overflow-hidden flex flex-col group"
+              <Link
+                key={s.slug}
+                href={`/services/${s.slug}`}
+                className="group bg-ink p-8 lg:p-10 hover:bg-surface-container transition-colors"
               >
-                <div className="h-[400px] overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    alt={s.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    src={s.img}
-                  />
-                </div>
-                <div className="p-10">
-                  <h3 className="font-headline font-bold text-2xl mb-4 tracking-tight uppercase">
-                    {s.title}
-                  </h3>
-                  <p className="text-cream/70 leading-relaxed mb-8">{s.blurb}</p>
-                  <Link
-                    href={
-                      s.title === "F&B Consulting"
-                        ? "/services/food-beverage-consulting"
-                        : "/services"
-                    }
-                    className="flex items-center gap-2 font-bold text-xs tracking-widest uppercase text-gold"
-                  >
-                    Learn More{" "}
-                    <MaterialIcon name="north_east" className="text-sm" />
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="bg-ink py-32 border-y border-cream/5">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-          <Stat value="50+" label="Unique Concepts" />
-          <Stat value="10+" label="Service Areas" />
-          <Stat value="3k+" label="Staff Trained" />
-          <Stat value="100%" label="Success Rate" />
-        </div>
-      </section>
-
-      {/* Portfolio gallery */}
-      <section className="bg-cream py-32 overflow-hidden">
-        <div className="px-6 md:px-20 mb-16">
-          <SectionLabel className="mb-8">Our Portfolio</SectionLabel>
-          <h2 className="font-headline font-bold text-4xl md:text-5xl text-ink tracking-tighter uppercase">
-            Curated Success Stories
-          </h2>
-        </div>
-        <div className="flex gap-8 overflow-x-auto px-6 md:px-20 pb-20 hide-scrollbar snap-x">
-          {[
-            siteImages.industrial,
-            siteImages.cocktail,
-            siteImages.cafe,
-            siteImages.rooftop,
-          ].map((src, i) => (
-            <div
-              key={i}
-              className="min-w-[300px] md:min-w-[500px] aspect-[16/10] bg-neutral-200 flex-shrink-0 snap-center"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                alt="Portfolio work"
-                className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity"
-                src={src}
-              />
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Why choose us */}
-      <section className="bg-ink py-32 px-6 md:px-20 text-cream">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
-          <div>
-            <SectionLabel className="mb-8">Our Edge</SectionLabel>
-            <h2 className="font-headline font-bold text-4xl md:text-6xl text-white leading-tight tracking-tighter mb-8 uppercase">
-              Precision in <br />
-              every detail.
-            </h2>
-            <p className="text-cream/70 text-lg leading-relaxed mb-12">
-              We don&apos;t just advise; we execute. Our team consists of former
-              Michelin-star operators, financial analysts, and brand architects
-              who understand the industry from the inside out.
-            </p>
-            <Button variant="outline" asChild>
-              <Link href="/about">Learn our process</Link>
-            </Button>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {values.map((v) => (
-              <div
-                key={v.title}
-                className="bg-surface-container-high p-8 border-l-4 border-gold"
-              >
-                <MaterialIcon name={v.icon} className="text-gold mb-6 text-3xl" />
-                <h4 className="font-headline font-bold text-xl text-white mb-2 uppercase">
-                  {v.title}
-                </h4>
-                <p className="text-cream/70 text-sm">{v.blurb}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="bg-cream py-32 px-6 md:px-20 text-ink">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <SectionLabel className="mb-8">Client Voices</SectionLabel>
-            <h2 className="font-headline font-bold text-4xl md:text-5xl tracking-tighter uppercase">
-              Trusted by the best
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((t) => (
-              <div
-                key={t.name}
-                className="bg-white p-10 flex flex-col justify-between shadow-sm border border-ink/5"
-              >
-                <div>
-                  <MaterialIcon
-                    name="format_quote"
-                    className="text-gold text-5xl opacity-30"
-                  />
-                  <p className="text-ink/70 text-lg italic leading-relaxed mt-4">
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-                </div>
-                <div className="mt-12 flex items-center gap-4">
-                  <div className="w-12 h-12 bg-neutral-200 rounded-full flex-shrink-0 overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img alt={t.name} src={t.img} />
-                  </div>
-                  <div>
-                    <h5 className="font-bold text-ink">{t.name}</h5>
-                    <p className="text-xs text-gold uppercase tracking-widest">
-                      {t.role}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Blog preview */}
-      <section className="bg-ink py-32 px-6 md:px-20 text-cream">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-8">
-            <div>
-              <SectionLabel className="mb-8">Insights</SectionLabel>
-              <h2 className="font-headline font-bold text-4xl md:text-5xl tracking-tighter uppercase">
-                Latest from the kitchen
-              </h2>
-            </div>
-            <Button asChild size="sm" className="py-4">
-              <Link href="/blog">View All Articles</Link>
-            </Button>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {posts.map((p) => (
-              <article key={p.title} className="group cursor-pointer">
-                <div className="aspect-video bg-surface-container-high overflow-hidden mb-6">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    alt={p.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    src={p.img}
-                  />
-                </div>
-                <div className="text-xs font-bold text-gold uppercase tracking-widest mb-4">
-                  {p.category}
-                </div>
-                <h3 className="font-headline font-bold text-2xl mb-4 group-hover:text-gold transition-colors uppercase">
-                  {p.title}
+                <div className="font-label text-xs tracking-[0.2em] text-sand/70 mb-6">{s.n}</div>
+                <h3 className="font-headline text-2xl mb-4 group-hover:text-sand transition-colors">
+                  {s.title}
                 </h3>
-                <p className="text-cream/60 text-sm leading-relaxed mb-6">
-                  {p.blurb}
-                </p>
-                <MaterialIcon name="trending_flat" />
-              </article>
+                <p className="text-cream/65 leading-relaxed">{s.summary}</p>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA banner */}
-      <section className="relative py-40 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            alt="Dim luxury bar"
-            className="w-full h-full object-cover grayscale-[30%]"
-            src={siteImages.ctaBar}
-          />
-          <div className="absolute inset-0 bg-ink/80 backdrop-blur-sm" />
+      {/* Why Rolling Sleeves */}
+      <section className="bg-espresso py-28 px-6 md:px-20 text-cream">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <SectionLabel className="mb-6">Why Rolling Sleeves</SectionLabel>
+            <h2 className="font-headline font-medium text-5xl md:text-7xl leading-[1.02] mb-8">
+              Operators First.
+              <br />
+              <span className="text-sand">Consultants Second.</span>
+            </h2>
+            <p className="text-cream/80 text-lg leading-relaxed mb-6 max-w-xl">
+              We don&apos;t just design restaurants. We design how they work. Our
+              advice comes from running kitchens and floors, not from a slide deck.
+            </p>
+            <p className="text-cream/80 text-lg leading-relaxed max-w-xl">
+              That is why owners and investors trust us with major restaurant
+              investments: we plan every decision around the people who will run
+              the restaurant and the numbers it has to make.
+            </p>
+          </div>
+          <ul className="border-t border-cream/15">
+            {pillars.map((p, i) => (
+              <li
+                key={p}
+                className="flex items-baseline gap-6 border-b border-cream/15 py-4 font-headline text-2xl md:text-3xl"
+              >
+                <span className="w-6 text-sand/60 text-lg">
+                  {i === 0 ? "" : i === pillars.length - 1 ? "=" : "+"}
+                </span>
+                <span className={i === pillars.length - 1 ? "text-sand" : ""}>{p}</span>
+              </li>
+            ))}
+          </ul>
         </div>
-        <div className="relative z-10 max-w-4xl mx-auto px-8 text-center">
-          <h2 className="font-headline font-extrabold text-5xl md:text-7xl text-white leading-tight tracking-tighter mb-10 uppercase">
-            READY TO OPEN YOUR <br />
-            <span className="text-gold">DREAM RESTAURANT?</span>
-          </h2>
-          <p className="text-cream/70 text-xl mb-12 max-w-2xl mx-auto">
-            Let&apos;s turn your vision into a high-performance operation. Book
-            your strategy session today.
-          </p>
-          <div className="flex flex-col md:flex-row justify-center gap-6">
-            <Button asChild size="xl">
-              <Link href="/contact">
-                Get Started Now
-                <MaterialIcon name="rocket_launch" />
+      </section>
+
+      {/* Kitchen planning */}
+      <section className="bg-cream py-28 px-6 md:px-20 text-espresso">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="relative aspect-[4/5] overflow-hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              alt="Commercial kitchen in service"
+              className="w-full h-full object-cover grayscale-[30%]"
+              src={siteImages.servicesCtaKitchen}
+            />
+          </div>
+          <div>
+            <SectionLabel variant="light" className="mb-6">
+              Kitchen Planning
+            </SectionLabel>
+            <h2 className="font-headline font-medium text-4xl md:text-5xl leading-tight mb-6">
+              We design for the people who have to run the restaurant.
+            </h2>
+            <p className="text-espresso/75 text-lg leading-relaxed mb-10">
+              The kitchen decides how fast, how consistently and how profitably a
+              restaurant can operate. We plan every step of it around the way
+              chefs and staff actually work.
+            </p>
+            <ul className="flex flex-wrap gap-2 mb-10">
+              {kitchenAreas.map((a) => (
+                <li
+                  key={a}
+                  className="border border-espresso/20 px-4 py-2 text-sm text-espresso/80"
+                >
+                  {a}
+                </li>
+              ))}
+            </ul>
+            <Button asChild variant="dark">
+              <Link href="/services/restaurant-design-kitchen-planning">
+                Kitchen planning in detail
               </Link>
             </Button>
           </div>
         </div>
       </section>
+
+      <JourneySection />
+
+      {/* Who we help */}
+      <section className="bg-cream py-28 px-6 md:px-20 text-espresso">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div>
+            <SectionLabel variant="light" className="mb-6">
+              Who We Help
+            </SectionLabel>
+            <h2 className="font-headline font-medium text-4xl md:text-5xl leading-tight">
+              Built for owners and investors.
+            </h2>
+          </div>
+          <ul className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-px bg-espresso/10">
+            {audiences.map((a) => (
+              <li key={a} className="bg-cream p-8 font-headline text-2xl leading-snug">
+                {a}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <CaseStudiesSection />
+      <FoundersSection />
+      <TestimonialsSection />
+      <FinalCta />
     </>
   );
 }

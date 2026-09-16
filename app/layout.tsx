@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
-import { Epilogue, Manrope } from "next/font/google";
+import { Zilla_Slab, Manrope } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SitePreloader } from "@/components/site-preloader";
+import { WhatsAppButton } from "@/components/whatsapp-button";
+import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
-const epilogue = Epilogue({
+const zilla = Zilla_Slab({
   subsets: ["latin"],
-  weight: ["300", "400", "700", "800", "900"],
-  variable: "--font-epilogue",
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-zilla",
   display: "swap",
 });
 
@@ -20,12 +22,52 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Rolling Sleeves | Hospitality Consultancy",
+    default:
+      "Rolling Sleeves | Restaurant & F&B Consultant UAE, Abu Dhabi",
     template: "%s | Rolling Sleeves",
   },
-  description:
-    "Bespoke consultancy for modern hospitality. We bridge the gap between architectural vision and operational excellence.",
+  description: siteConfig.description,
+  keywords: [
+    "Restaurant Consultant UAE",
+    "Restaurant Consultant Abu Dhabi",
+    "Restaurant Kitchen Consultant UAE",
+    "Restaurant Pre-Opening Consultant UAE",
+    "F&B Consultant UAE",
+  ],
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: siteConfig.name,
+    title: "Rolling Sleeves | Restaurant & F&B Consultant UAE",
+    description: siteConfig.description,
+    url: siteConfig.url,
+    images: ["/large-dark.png"],
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: siteConfig.name,
+  url: siteConfig.url,
+  logo: `${siteConfig.url}/large-dark.png`,
+  description: siteConfig.description,
+  slogan: siteConfig.tagline,
+  areaServed: ["United Arab Emirates", "Abu Dhabi", "Dubai"],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Abu Dhabi",
+    addressCountry: "AE",
+  },
+  knowsAbout: [
+    "Restaurant consulting",
+    "Commercial kitchen planning",
+    "Menu engineering",
+    "Restaurant pre-opening",
+    "Restaurant operations",
+  ],
 };
 
 export default function RootLayout({
@@ -36,10 +78,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${epilogue.variable} ${manrope.variable}`}
+      className={`dark ${zilla.variable} ${manrope.variable}`}
       suppressHydrationWarning
     >
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {/* Load Material Symbols in parallel with the rest of the page.
             Previously imported via @import in globals.css, which is
             render-blocking and serializes network requests. */}
@@ -64,6 +110,7 @@ export default function RootLayout({
         <SiteHeader />
         <main className="min-h-0 flex-1">{children}</main>
         <SiteFooter />
+        <WhatsAppButton />
         <SitePreloader />
       </body>
     </html>
